@@ -17,6 +17,12 @@ header {
     align-items: center;
 }
 
+h2{
+    text-align: center;
+
+}
+
+
 nav {
     display: none;
     flex-direction: column;
