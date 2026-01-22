@@ -1,5 +1,9 @@
 @media (min-width: 768px) {
 
+    #menu {
+        display: none;
+    }
+
     nav {
         display: flex;
         gap: 1rem;
