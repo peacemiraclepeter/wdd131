@@ -2,6 +2,7 @@
     --primary: #227102;
     --secondary: #0c4100;
     --light: #ffffff;
+    --card-bg: #f4f4f4;
 }
 
 body {
@@ -26,15 +27,19 @@ footer {
     padding: 1rem;
 }
 
-.data,
-.weather {
-    background: #f4f4f4;
+.card {
+    background-color: var(--card-bg);
     padding: 1rem;
     margin-bottom: 1rem;
     font-weight: bold;
-    font-size: larger;
+}
+
+.card h2 {
+    margin-top: 0;
 }
 
 .weather-icon {
     width: 50px;
+    display: block;
+    margin-bottom: 0.5rem;
 }
