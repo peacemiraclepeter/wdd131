@@ -1,9 +1,26 @@
 @media only screen and (min-width: 64rem) {
 
+    .hero {
+        position: relative;
+    }
+
     .info {
+        position: absolute;
+        inset: 0;
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-        gap: 1rem;
+        align-items: start;
+        padding: 2rem;
+    }
+
+    .data {
+        grid-column: 1 / 2;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .weather {
+        grid-column: 3 / 4;
+        background: rgba(255, 255, 255, 0.9);
     }
 
     .weather h2::after {
