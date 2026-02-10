@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    background: #4b136e;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+nav {
+    display: none;
+    flex-direction: column;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+nav a:hover {
+    background: white;
+    color: #4b136e;
+}
+
+#menu {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+#menu::before {
+    content: "☰";
+}
+
+#menu.open::before {
+    content: "❌";
+}
+
+nav.open {
+    display: flex;
+}
+
+main {
+    max-width: 1100px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+figure {
+    width: 100%;
+    background: #f4f4f4;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+figcaption h3 {
+    margin: 0.75rem 0;
+    color: #4b136e;
+}
+
+figcaption p {
+    margin: 0.25rem 0;
+}
+
+footer {
+    background: #4b136e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
