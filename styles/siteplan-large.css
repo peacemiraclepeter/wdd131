@@ -1,0 +1,14 @@
+@media (min-width: 768px) {
+    main {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    section {
+        padding: 1rem 0;
+    }
+
+    #colors div {
+        margin-bottom: 0.5rem;
+    }
+}
