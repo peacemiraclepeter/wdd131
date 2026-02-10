@@ -31,6 +31,14 @@ footer {
     color: #ffffff;
     text-align: center;
     padding: 1.5rem;
+    
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
 }
 
 main {
