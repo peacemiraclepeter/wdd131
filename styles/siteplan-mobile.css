@@ -1,17 +1,19 @@
 .tagline {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     opacity: 0.9;
 }
 
-.color-sample.primary {
-    background-color: var(--primary);
+.color-box.primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
 }
 
-.color-sample.secondary {
-    background-color: var(--secondary);
+.color-box.secondary {
+    background-color: var(--secondary-color);
+    color: #ffffff;
 }
 
-.color-sample.accent {
-    background-color: var(--accent);
-    color: black;
+.color-box.accent {
+    background-color: var(--accent-color);
+    color: #000000;
 }

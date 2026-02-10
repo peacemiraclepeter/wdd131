@@ -1,6 +1,3 @@
-// Future enhancement placeholder
-// Confirms JavaScript is properly connected
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     console.log("Mp2 Effects site plan loaded successfully.");
 });
