@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Submit your review for our product. Share your experience and rate the product based on your satisfaction.">
+  <meta name="author" content="Miracle Peace Peter">
+  <link rel="stylesheet" href="styles/forms.css">
+  <script defer src="scripts/forms.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Product Review</h1>
+</header>
+
+<main>
+  <form method="get" action="review.html">
+
+    <!-- Product Name -->
+    <label for="product">Product Name</label>
+    <select id="product" name="product" required>
+      <option value="" disabled selected>Select a Product ...</option>
+        <option value="Product A">Product A</option>
+        <option value="Product B">Product B</option>
+        <option value="Product C">Product C</option>
+    </select>
+
+    <!-- Overall Rating -->
+    <fieldset>
+      <legend>Overall Rating</legend>
+
+      <label>
+        <input type="radio" name="rating" value="1" required> ☆
+      </label>
+      <label>
+        <input type="radio" name="rating" value="2"> ☆☆
+      </label>
+      <label>
+        <input type="radio" name="rating" value="3"> ☆☆☆
+      </label>
+      <label>
+        <input type="radio" name="rating" value="4"> ☆☆☆☆
+      </label>
+      <label>
+        <input type="radio" name="rating" value="5"> ☆☆☆☆☆
+      </label>
+    </fieldset>
+
+    <!-- Date -->
+    <label for="date">Date of Installation</label>
+    <input type="date" id="date" name="date" required>
+
+    <!-- Features -->
+    <fieldset>
+      <legend>Useful Features (check all that apply)</legend>
+
+      <label><input type="checkbox" name="features" value="Durability"> Durability</label>
+      <label><input type="checkbox" name="features" value="Ease of Use"> Ease of Use</label>
+      <label><input type="checkbox" name="features" value="Performance"> Performance</label>
+      <label><input type="checkbox" name="features" value="Design"> Design</label>
+    </fieldset>
+
+    <!-- Written Review -->
+    <label for="review">Written Review (Optional)</label>
+    <textarea id="review" name="review"></textarea>
+
+    <!-- Name -->
+    <label for="username">Your Name (Optional)</label>
+    <input type="text" id="username" name="username">
+
+    <!-- Submit -->
+    <input type="submit" value="Post Review">
+
+  </form>
+</main>
+
+<footer>
+  ©2024 ✅ Miracle Peace Peter✅ Nigeria<br>
+  Last Modification: <span id="lastModified"></span>
+</footer>
+
+
+
+</body>
+</html>
