@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,35 +13,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/filtered-temple-large.css">
     <link rel="stylesheet" href="styles/filtered-temples.css">
+    <link rel="stylesheet" href="styles/filtered-temple-large.css">
 
     <!-- JavaScript -->
     <script src="scripts/filtered-temples.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <h1>Temple Album</h1>
-        <button id="menu"></button>
-        <nav>
+
+<header>
+    <h1>Temple Album</h1>
+    <button id="menu"></button>
+    <nav>
+        <ul>
             <a href="#" data-filter="home">Home</a>
             <a href="#" data-filter="old">Old</a>
             <a href="#" data-filter="new">New</a>
             <a href="#" data-filter="large">Large</a>
             <a href="#" data-filter="small">Small</a>
-        </nav>
-    </header>
+        </ul>
 
-    <main>
-        <h2>Home</h2>
-        <section class="gallery" id="temples"></section>
-    </main>
 
-    <footer>
-        <p>© <span id="year"></span> ✿ Miracle Peace Peter ✿ Nigeria</p>
-        <p>Last Modification: <span id="lastModified"></span></p>
-    </footer>
+    </nav>
+</header>
+
+<main>
+    <h2>Home</h2>
+    <section class="gallery" id="temples"></section>
+</main>
+
+<footer>
+    <p>© <span id="year"></span> ✿ Miracle Peace Peter ✿ Nigeria</p>
+    <p>Last Modification: <span id="lastModified"></span></p>
+</footer>
+
 </body>
-
 </html>

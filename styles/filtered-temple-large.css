@@ -1,14 +1,27 @@
 @media (min-width: 768px) {
 
+    /* Hide hamburger on large screens */
     #menu {
         display: none;
     }
 
+    /* Make nav horizontal */
     nav {
         display: flex;
-        gap: 1rem;
+        justify-content: center;
+        /* centers links like screenshot */
+        align-items: center;
+        gap: 3rem;
+        /* spacing between links */
     }
 
+    nav a {
+        display: inline-flex;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    /* 3-column layout */
     .gallery {
         grid-template-columns: repeat(3, 1fr);
     }
