@@ -11,11 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
         serviceInput.value = "";
     }
 
-    // Form submission handler
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Validate input (simple example)
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const message = document.getElementById("message").value.trim();
@@ -25,17 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Save submission to localStorage (optional)
+        // Save submission to localStorage
         const submissions = JSON.parse(localStorage.getItem("submissions") || "[]");
         submissions.push({ name, email, service: serviceInput.value, message, date: new Date().toISOString() });
         localStorage.setItem("submissions", JSON.stringify(submissions));
 
-        // Hide form, show confirmation
+        // Hide form and show confirmation
         form.classList.add("hidden");
         confirmation.classList.remove("hidden");
-
-        console.log("Form submitted successfully:", { name, email, service: serviceInput.value, message });
     });
-
-    console.log("Contact page loaded with dynamic form functionality.");
 });

@@ -11,54 +11,41 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const servicesGrid = document.getElementById("services-grid");
-    const filterBtns = document.querySelectorAll(".filter-btn");
+    const filterBtns = document.querySelectorAll("#service-filters .filter-btn");
 
-    // Function to display services dynamically
     function displayServices(filteredServices) {
-        servicesGrid.innerHTML = ""; // Clear grid
+        servicesGrid.innerHTML = "";
         filteredServices.forEach(service => {
             const card = document.createElement("div");
             card.classList.add("service-card");
             card.innerHTML = `
-        <h3>${service.name}</h3>
-        <p>Category: ${service.category}</p>
-        <p>Price: ₦${service.price.toLocaleString()}</p>
-        <button class="quote-btn" data-service="${service.name}" data-price="${service.price}">Request Quote</button>
-      `;
+                <h3>${service.name}</h3>
+                <p>Category: ${service.category}</p>
+                <p>Price: ₦${service.price.toLocaleString()}</p>
+                <button class="quote-btn" data-service="${service.name}" data-price="${service.price}">Request Quote</button>
+            `;
             servicesGrid.appendChild(card);
         });
 
-        // Add event listeners to quote buttons
+        // Quote buttons click
         document.querySelectorAll(".quote-btn").forEach(btn => {
             btn.addEventListener("click", () => {
                 const serviceName = btn.dataset.service;
                 const servicePrice = btn.dataset.price;
-                // Save to localStorage for contact/quote page
                 localStorage.setItem("lastServiceQuote", JSON.stringify({ serviceName, servicePrice }));
                 alert(`You selected: ${serviceName} (₦${Number(servicePrice).toLocaleString()})\nGo to Contact page to complete your quote.`);
             });
         });
     }
 
-    // Initial display (all services)
     displayServices(services);
 
-    // Filter buttons
     filterBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            // Remove active class from all buttons
             filterBtns.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
-
             const category = btn.dataset.category;
-            if (category === "All") {
-                displayServices(services);
-            } else {
-                const filtered = services.filter(s => s.category === category);
-                displayServices(filtered);
-            }
+            displayServices(category === "All" ? services : services.filter(s => s.category === category));
         });
     });
-
-    console.log("Services page loaded with dynamic functionality.");
 });

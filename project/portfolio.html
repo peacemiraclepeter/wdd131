@@ -13,31 +13,24 @@
     <link rel="stylesheet" href="styles/mobile.css">
     <link rel="stylesheet" href="styles/large.css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&display=swap"
-        rel="stylesheet">
-
     <!-- JS -->
+    <script src="scripts/main.js" defer></script>
     <script src="scripts/portfolio.js" defer></script>
 </head>
 
 <body>
-
     <header>
         <div class="logo">Mp2 Effects</div>
-        <div class="main-logo"><img src="images/MP2 EFFECTS.png" alt="Menu Icon" width="100" height="100" id="menu">
-        </div>
+        <div class="main-logo"><img src="images/MP2 EFFECTS.png" alt="Logo" width="100" height="100"></div>
+
         <nav>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="menu-toggle">☰</div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
         </nav>
     </header>
 
@@ -46,7 +39,6 @@
             <h1>Our Portfolio</h1>
             <p>Here are some highlights of our branding, printing, graphic design, and web projects.</p>
 
-            <!-- Filter Buttons -->
             <div id="portfolio-filters">
                 <button data-category="All" class="filter-btn active">All</button>
                 <button data-category="Branding" class="filter-btn">Branding</button>
@@ -54,19 +46,17 @@
                 <button data-category="Digital" class="filter-btn">Digital</button>
             </div>
 
-            <!-- Portfolio Grid -->
-            <div id="portfolio-grid" class="portfolio-grid">
-                <!-- Dynamic content via JS -->
-            </div>
+            <div id="portfolio-grid" class="portfolio-grid"></div>
         </section>
     </main>
 
-<footer>
-    <p>© 2026 Mp2 Effects | All Rights Reserved</p>
-    <p>Address: 📍No.4 chief john Amadi Street Along Ogbogoro Road, Port Harcourt Rivers state | Phone: 📞+234 810 049
-        1304, 👨‍💻+234 816 323 3139 | Email:📩Mp2Effects@gmail.com or Petermiraclepeace@gmail.com</p>
-</footer>
+    <footer>
+        <p>© 2026 Mp2 Effects | All Rights Reserved</p>
+        <p>Address: No.4 Chief John Amadi Street Along Ogbogoro Road, Port Harcourt, Rivers State | Phone: +234 810 049
+            1304, +234 816 323 3139 | Email: Mp2Effects@gmail.com or Petermiraclepeace@gmail.com</p>
+        <p><a href="references.html" style="color: #facc15; text-decoration: underline;">References</a></p>
 
+    </footer>
 </body>
 
 </html>

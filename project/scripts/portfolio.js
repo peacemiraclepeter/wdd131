@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const projects = [
         { title: "Church Branding", category: "Branding", image: "https://i.pinimg.com/1200x/e6/f5/e7/e6f5e77a7ae12f5674b973b82ba939db.jpg" },
         { title: "Corporate Website", category: "Digital", image: "https://i.pinimg.com/1200x/9c/3d/ee/9c3deece69a8ad2ea3772e5371671645.jpg" },
@@ -12,43 +11,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const portfolioGrid = document.getElementById("portfolio-grid");
     const filterBtns = document.querySelectorAll("#portfolio-filters .filter-btn");
 
-    // Function to display projects dynamically
     function displayProjects(filteredProjects) {
         portfolioGrid.innerHTML = "";
         filteredProjects.forEach(project => {
             const card = document.createElement("div");
             card.classList.add("portfolio-card");
-
             card.innerHTML = `
-        <img src="${project.image}" alt="${project.title}" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3>${project.title}</h3>
-          <p>Category: ${project.category}</p>
-        </div>
-      `;
+                <img src="${project.image}" alt="${project.title}" loading="lazy">
+                <div class="portfolio-overlay">
+                    <h3>${project.title}</h3>
+                    <p>Category: ${project.category}</p>
+                </div>
+            `;
             portfolioGrid.appendChild(card);
         });
     }
 
-    // Initial display (All projects)
+    // Initial display
     displayProjects(projects);
 
     // Filter buttons
     filterBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            // Remove active class
             filterBtns.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
 
             const category = btn.dataset.category;
-            if (category === "All") {
-                displayProjects(projects);
-            } else {
-                const filtered = projects.filter(p => p.category === category);
-                displayProjects(filtered);
-            }
+            displayProjects(category === "All" ? projects : projects.filter(p => p.category === category));
         });
     });
-
-    console.log("Portfolio page loaded dynamically with lazy loading.");
 });

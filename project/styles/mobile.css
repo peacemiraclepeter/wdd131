@@ -1,6 +1,4 @@
-/* ========== MOBILE-FIRST ========== */
-
-/* Header */
+/* ================= MOBILE-FIRST ================= */
 header {
     display: flex;
     flex-direction: column;
@@ -12,7 +10,6 @@ header {
     display: none;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 1rem;
     width: 100%;
     text-align: center;
 }
@@ -29,47 +26,11 @@ header {
 
 /* Hero Section */
 #hero {
-    text-align: center;
     padding: 3rem 1rem;
 }
 
 .hero-buttons {
-    margin-top: 1.5rem;
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-}
-
-.hero-buttons a {
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Services Grid */
-.services-grid,
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin: 2rem 1rem;
-}
-
-.service-card,
-.portfolio-card {
-    background-color: var(--primary);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.service-card:hover,
-.portfolio-card:hover {
-    transform: translateY(-5px);
 }
 
 .view-all {
@@ -79,14 +40,7 @@ header {
     font-weight: bold;
 }
 
-/* Images */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* ========== TABLET VIEW ========== */
+/* Tablet override */
 @media (min-width: 600px) {
     .hero-buttons {
         flex-direction: row;
@@ -100,13 +54,13 @@ img {
     }
 
     .nav-links {
+        display: flex !important;
         flex-direction: row;
         justify-content: center;
         gap: 2rem;
-        display: flex !important;
     }
 
     .menu-toggle {
-        display: none; /* hide hamburger on tablet */
+        display: none;
     }
 }
