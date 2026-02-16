@@ -1,0 +1,55 @@
+@media(min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    main {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+    }
+
+    section {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .hero-content {
+        text-align: left;
+    }
+
+    .hero-overlay {
+        justify-content: flex-start;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}

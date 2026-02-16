@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mp2 Effects - Contact us for printing, branding, and web services">
+    <title>Mp2 Effects | Contact</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+    <link rel="stylesheet" href="styles/large.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- JS -->
+    <script src="scripts/contact.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Mp2 Effects</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">☰</div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact">
+            <h1>Contact Mp2 Effects</h1>
+            <p>Fill out the form below to request a quote or ask a question.</p>
+
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Requested:</label>
+                    <input type="text" id="service" name="service" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message / Details:</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <div id="confirmation" class="hidden">
+                <h2>Thank You!</h2>
+                <p>Your message has been received. We will contact you shortly.</p>
+            </div>
+        </section>
+    </main>
+
+<footer>
+    <p>© 2026 Mp2 Effects | All Rights Reserved</p>
+    <p>Address: 📍No.4 chief john Amadi Street Along Ogbogoro Road, Port Harcourt Rivers state | Phone: 📞+234 810 049
+        1304, 👨‍💻+234 816 323 3139 | Email:📩Mp2Effects@gmail.com or Petermiraclepeace@gmail.com</p>
+</footer>
+
+</body>
+
+</html>
