@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miracle Peace Peter | Creative Developer & Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#ec4899',
+                        accent: '#8b5cf6',
+                        dark: '#0f172a',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #6366f1;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: #ec4899;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        @media (max-width: 768px) {
+
+            .custom-cursor,
+            .cursor-dot {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 font-sans overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl">
+                        M</div>
+                    <span class="font-display font-bold text-xl tracking-tight">Miracle<span
+                            class="text-primary">Peter</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link font-medium hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="nav-link font-medium hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="nav-link font-medium hover:text-primary transition-colors">Skills</a>
+                    <a href="#experience"
+                        class="nav-link font-medium hover:text-primary transition-colors">Experience</a>
+                    <a href="#portfolio" class="nav-link font-medium hover:text-primary transition-colors">Portfolio</a>
+                    <a href="#contact" class="nav-link font-medium hover:text-primary transition-colors">Contact</a>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
+                        <i class="fas fa-moon text-primary hidden dark:block"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
+                        <i class="fas fa-moon text-primary hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-2xl focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden glass border-t border-slate-200 dark:border-slate-700">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home"
+                    class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">Home</a>
+                <a href="#about"
+                    class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">About</a>
+                <a href="#skills"
+                    class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">Skills</a>
+                <a href="#experience"
+                    class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">Experience</a>
+                <a href="#portfolio"
+                    class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">Portfolio</a>
+                <a href="#contact"
+                    class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background Blobs -->
+        <div class="blob w-96 h-96 bg-primary rounded-full top-20 -left-20 animate-pulse-slow"></div>
+        <div class="blob w-80 h-80 bg-secondary rounded-full bottom-20 -right-20 animate-pulse-slow"
+            style="animation-delay: 2s;"></div>
+        <div class="blob w-64 h-64 bg-accent rounded-full top-1/2 left-1/2 animate-pulse-slow"
+            style="animation-delay: 4s;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal active">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 mb-6 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-sm font-medium">Available for Work</span>
+                </div>
+
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+                    Hi, I'm <span class="text-gradient">Miracle</span><br>
+                    <span class="text-slate-600 dark:text-slate-400">Peace Peter</span>
+                </h1>
+
+                <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto font-light">
+                    Creative <span class="font-semibold text-primary">Web Developer</span> •
+                    <span class="font-semibold text-secondary">Graphic Designer</span> •
+                    <span class="font-semibold text-accent">Video Editor</span>
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <a href="#portfolio"
+                        class="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-4 border-2 border-slate-300 dark:border-slate-600 rounded-full font-semibold hover:border-primary hover:text-primary transition-all duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-12">
+                    <div
+                        class="p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-primary">3+</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Years Experience</div>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-secondary">50+</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Projects Completed</div>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-accent">20+</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Happy Clients</div>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-green-500">100%</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-slate-400 hover:text-primary transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-3xl transform rotate-3 opacity-20">
+                        </div>
+                        <div
+                            class="relative bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-200 dark:border-slate-700">
+                            <div
+                                class="aspect-square rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center overflow-hidden">
+                                <div class="text-center">
+                                <img src="images/mypicture.png" alt="Miracle Peace Peter"
+                                    class="w-59 h-49 mx-auto rounded-full object-cover mb-4 border-4 border-primary" />
+                                    <p class="text-slate-500 dark:text-slate-400 font-medium">Miracle Peace Peter</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 grid grid-cols-2 gap-4">
+                                <div class="text-center p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50">
+                                    <i class="fas fa-map-marker-alt text-primary mb-1"></i>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">Rivers State, Nigeria</p>
+                                </div>
+                                <div class="text-center p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50">
+                                    <i class="fas fa-flag text-secondary mb-1"></i>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400">Akwa Ibom Origin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                        About <span class="text-gradient">Me</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        Motivated and detail-oriented <strong>Software Developer</strong> and <strong>Graphic
+                            Designer</strong> with hands-on experience in digital design, web technologies, and
+                        industrial operations. I create engaging visual designs, build responsive web solutions, and
+                        maintain high operational standards.
+                    </p>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                        A fast learner with strong problem-solving abilities, excellent communication skills, and a
+                        passion for technology and creativity. I'm committed to delivering high-quality work,
+                        collaborating with teams, and continuously improving my skills.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm">Web
+                            Development</span>
+                        <span class="px-4 py-2 rounded-full bg-secondary/10 text-secondary font-medium text-sm">UI/UX
+                            Design</span>
+                        <span class="px-4 py-2 rounded-full bg-accent/10 text-accent font-medium text-sm">Video
+                            Editing</span>
+                        <span
+                            class="px-4 py-2 rounded-full bg-green-500/10 text-green-600 font-medium text-sm">PowerPoint</span>
+                        <span
+                            class="px-4 py-2 rounded-full bg-orange-500/10 text-orange-600 font-medium text-sm">Synthesia.io</span>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="mailto:petermiraclepeace@gmail.com"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+                            <i class="fas fa-envelope"></i>
+                            <span>petermiraclepeace@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - Bento Grid Layout -->
+    <section id="skills" class="py-24 bg-slate-100 dark:bg-slate-800/50 relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%236366f1\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">My <span
+                        class="text-gradient">Skills</span></h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">A comprehensive toolkit of technical and
+                    professional capabilities refined through years of creative work.</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-min">
+
+                <!-- Large Card: Web Development -->
+                <div
+                    class="skill-card md:col-span-2 lg:col-span-2 bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-lg border border-slate-200 dark:border-slate-700 reveal group cursor-pointer transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors text-primary text-2xl">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span
+                            class="text-xs font-semibold px-3 py-1 rounded-full bg-green-500/10 text-green-600">Expert</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Web Development</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">Building responsive, modern websites with clean
+                        code and optimal performance.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-sm">HTML5</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-sm">CSS3</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-sm">JavaScript</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-sm">Python</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-sm">Git/GitHub</span>
+                    </div>
+                </div>
+
+                <!-- Medium Card: Graphic Design -->
+                <div class="skill-card bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 reveal group cursor-pointer transition-all duration-300"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors text-secondary text-xl mb-4">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Graphic Design</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Visual branding and digital illustration
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs">Photoshop</span>
+                        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs">Illustrator</span>
+                        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs">CorelDRAW</span>
+                        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs">Canva</span>
+                    </div>
+                </div>
+
+                <!-- Medium Card: Video Editing -->
+                <div class="skill-card bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 reveal group cursor-pointer transition-all duration-300"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors text-accent text-xl mb-4">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold mb-2">Video Editing</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">Professional video production and editing
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs">CapCut</span>
+                        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs">Synthesia</span>
+                    </div>
+                </div>
+
+                <!-- Small Card: PowerPoint -->
+                <div class="skill-card bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 reveal group cursor-pointer transition-all duration-300"
+                    style="transition-delay: 300ms;">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-colors text-orange-500 text-xl mb-3">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold mb-1">PowerPoint</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs">Expert presentation design with ChatGPT
+                        research integration</p>
+                </div>
+
+                <!-- Small Card: UI/UX -->
+                <div class="skill-card bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 reveal group cursor-pointer transition-all duration-300"
+                    style="transition-delay: 400ms;">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center group-hover:bg-pink-500 group-hover:text-white transition-colors text-pink-500 text-xl mb-3">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold mb-1">UI/UX Design</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs">User-centered interface design</p>
+                </div>
+
+                <!-- Large Card: Professional Skills -->
+                <div class="skill-card md:col-span-2 lg:col-span-2 bg-gradient-to-br from-primary to-secondary rounded-3xl p-8 shadow-lg text-white reveal group cursor-pointer transition-all duration-300"
+                    style="transition-delay: 500ms;">
+                    <h3 class="font-display text-2xl font-bold mb-4">Professional Skills</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-white/80"></i>
+                            <span class="text-sm">Communication</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-white/80"></i>
+                            <span class="text-sm">Time Management</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-white/80"></i>
+                            <span class="text-sm">Problem Solving</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-white/80"></i>
+                            <span class="text-sm">Team Collaboration</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-white/80"></i>
+                            <span class="text-sm">Attention to Detail</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-white/80"></i>
+                            <span class="text-sm">Critical Thinking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Card: AI Tools -->
+                <div class="skill-card bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 reveal group cursor-pointer transition-all duration-300"
+                    style="transition-delay: 600ms;">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors text-purple-500 text-xl mb-3">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold mb-1">AI Tools</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs">ChatGPT research & content creation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Professional <span
+                        class="text-gradient">Experience</span></h2>
+                <p class="text-slate-600 dark:text-slate-400">My journey through professional roles and
+                    responsibilities.</p>
+            </div>
